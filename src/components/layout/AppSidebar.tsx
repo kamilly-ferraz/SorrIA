@@ -7,27 +7,39 @@ import {
   Package,
   BarChart3,
   Settings,
-  Brain,
   ChevronLeft,
   ChevronRight,
+  SmilePlus,
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/hooks/useAuth';
 
-const navItems = [
-  { label: 'Dashboard', icon: LayoutDashboard, path: '/' },
-  { label: 'Pacientes', icon: Users, path: '/pacientes' },
-  { label: 'Agenda', icon: Calendar, path: '/agenda' },
-  { label: 'Financeiro', icon: DollarSign, path: '/financeiro' },
-  { label: 'Estoque', icon: Package, path: '/estoque' },
-  { label: 'AI Insights', icon: Brain, path: '/ai-insights' },
-  { label: 'Relatórios', icon: BarChart3, path: '/relatorios' },
-  { label: 'Configurações', icon: Settings, path: '/configuracoes' },
+type AppRole = 'admin' | 'dentista';
+
+interface NavItem {
+  label: string;
+  icon: React.ElementType;
+  path: string;
+  roles: AppRole[];
+}
+
+const navItems: NavItem[] = [
+  { label: 'Dashboard', icon: LayoutDashboard, path: '/', roles: ['admin', 'dentista'] },
+  { label: 'Pacientes', icon: Users, path: '/pacientes', roles: ['admin', 'dentista'] },
+  { label: 'Agenda', icon: Calendar, path: '/agenda', roles: ['admin', 'dentista'] },
+  { label: 'Financeiro', icon: DollarSign, path: '/financeiro', roles: ['admin'] },
+  { label: 'Estoque', icon: Package, path: '/estoque', roles: ['admin'] },
+  { label: 'Relatórios', icon: BarChart3, path: '/relatorios', roles: ['admin'] },
+  { label: 'Configurações', icon: Settings, path: '/configuracoes', roles: ['admin', 'dentista'] },
 ];
 
 export function AppSidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
+  const { role } = useAuth();
+
+  const filteredItems = navItems.filter(item => !role || item.roles.includes(role));
 
   return (
     <aside
@@ -38,21 +50,20 @@ export function AppSidebar() {
     >
       {/* Logo */}
       <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-5">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ai-gradient">
-          <Brain className="h-5 w-5 text-primary-foreground" />
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
+          <SmilePlus className="h-5 w-5 text-primary-foreground" />
         </div>
         {!collapsed && (
           <span className="text-lg font-bold tracking-tight text-sidebar-primary-foreground">
-            Sorr<span className="text-sidebar-primary">IA</span>
+            SorrIA
           </span>
         )}
       </div>
 
       {/* Nav */}
       <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
-        {navItems.map((item) => {
+        {filteredItems.map((item) => {
           const isActive = location.pathname === item.path;
-          const isAI = item.path === '/ai-insights';
           return (
             <Link
               key={item.path}
@@ -60,14 +71,12 @@ export function AppSidebar() {
               className={cn(
                 'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200',
                 isActive
-                  ? isAI
-                    ? 'ai-gradient text-primary-foreground shadow-md'
-                    : 'bg-sidebar-accent text-sidebar-primary-foreground'
+                  ? 'bg-sidebar-accent text-sidebar-primary-foreground'
                   : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
                 collapsed && 'justify-center px-2'
               )}
             >
-              <item.icon className={cn('h-5 w-5 shrink-0', isActive && isAI && 'text-primary-foreground')} />
+              <item.icon className="h-5 w-5 shrink-0" />
               {!collapsed && <span>{item.label}</span>}
             </Link>
           );

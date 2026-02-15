@@ -36,17 +36,7 @@ export interface StockItem {
   nivel_alerta: number;
 }
 
-export interface AIInsight {
-  id: string;
-  paciente_id: string;
-  insight_texto: string;
-  sugestao_tratamento: string;
-  justificativa: string;
-  probabilidade: number;
-  created_at: string;
-}
-
-export type UserRole = 'dentista' | 'diretora' | 'secretaria' | 'admin';
+export type UserRole = 'admin' | 'dentista';
 
 export interface User {
   id: string;

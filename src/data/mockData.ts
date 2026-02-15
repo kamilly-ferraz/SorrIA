@@ -1,12 +1,4 @@
-import type { Patient, Appointment, FinanceRecord, StockItem, AIInsight, User } from '@/types/sorria';
-
-export const currentUser: User = {
-  id: '1',
-  nome: 'Dra. Carolina Mendes',
-  email: 'carolina@sorria.com',
-  papel: 'dentista',
-  avatar_url: '',
-};
+import type { Patient, Appointment, FinanceRecord, StockItem } from '@/types/sorria';
 
 export const mockPatients: Patient[] = [
   { id: '1', nome: 'Maria Silva', telefone: '(11) 99123-4567', data_nascimento: '1985-03-15', historico_clinico: 'Paciente com histórico de cáries recorrentes. Última limpeza há 8 meses.', radiografias: [], ativo: true, created_at: '2024-01-10', avatar_url: '' },
@@ -38,27 +30,6 @@ export const mockStock: StockItem[] = [
   { id: '3', item: 'Luvas Procedimento M', quantidade: 45, nivel_alerta: 20 },
   { id: '4', item: 'Fio de Sutura 4-0', quantidade: 8, nivel_alerta: 5 },
   { id: '5', item: 'Broca Diamantada 1012', quantidade: 2, nivel_alerta: 5 },
-];
-
-export const mockInsights: AIInsight[] = [
-  {
-    id: '1',
-    paciente_id: '1',
-    insight_texto: 'Padrão de cáries recorrentes identificado na região posterior. Recomenda-se abordagem preventiva intensiva.',
-    sugestao_tratamento: 'Aplicação de selante nos pré-molares + programa de fluoretação quinzenal por 3 meses',
-    justificativa: 'Histórico de 4 restaurações nos últimos 2 anos na mesma região. Dieta rica em carboidratos refinados relatada.',
-    probabilidade: 87,
-    created_at: '2026-02-14',
-  },
-  {
-    id: '2',
-    paciente_id: '2',
-    insight_texto: 'Risco periodontal moderado detectado. Perda óssea inicial observada em radiografia panorâmica.',
-    sugestao_tratamento: 'Raspagem subgengival + acompanhamento trimestral com sondagem periodontal',
-    justificativa: 'Bolsas periodontais de 4-5mm nos dentes 16, 26 e 36. Sangramento à sondagem presente.',
-    probabilidade: 74,
-    created_at: '2026-02-13',
-  },
 ];
 
 export function getTodayRevenue(): number {
