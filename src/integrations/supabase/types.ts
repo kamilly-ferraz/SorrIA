@@ -14,16 +14,219 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      agendamentos: {
+        Row: {
+          created_at: string
+          data: string
+          dentista_id: string | null
+          horario: string
+          id: string
+          paciente_id: string
+          procedimento: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          data: string
+          dentista_id?: string | null
+          horario: string
+          id?: string
+          paciente_id: string
+          procedimento: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          dentista_id?: string | null
+          horario?: string
+          id?: string
+          paciente_id?: string
+          procedimento?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "agendamentos_paciente_id_fkey"
+            columns: ["paciente_id"]
+            isOneToOne: false
+            referencedRelation: "pacientes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      auditoria_logs: {
+        Row: {
+          acao: string
+          created_at: string
+          detalhes: Json | null
+          entidade: string
+          entidade_id: string | null
+          id: string
+          usuario_id: string | null
+        }
+        Insert: {
+          acao: string
+          created_at?: string
+          detalhes?: Json | null
+          entidade: string
+          entidade_id?: string | null
+          id?: string
+          usuario_id?: string | null
+        }
+        Update: {
+          acao?: string
+          created_at?: string
+          detalhes?: Json | null
+          entidade?: string
+          entidade_id?: string | null
+          id?: string
+          usuario_id?: string | null
+        }
+        Relationships: []
+      }
+      estoque: {
+        Row: {
+          created_at: string
+          id: string
+          item: string
+          nivel_alerta: number
+          quantidade: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item: string
+          nivel_alerta?: number
+          quantidade?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item?: string
+          nivel_alerta?: number
+          quantidade?: number
+        }
+        Relationships: []
+      }
+      financeiro: {
+        Row: {
+          created_at: string
+          data: string
+          descricao: string
+          id: string
+          tipo: string
+          valor: number
+        }
+        Insert: {
+          created_at?: string
+          data?: string
+          descricao: string
+          id?: string
+          tipo: string
+          valor: number
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          descricao?: string
+          id?: string
+          tipo?: string
+          valor?: number
+        }
+        Relationships: []
+      }
+      pacientes: {
+        Row: {
+          ativo: boolean
+          created_at: string
+          data_nascimento: string | null
+          historico_clinico: string | null
+          id: string
+          nome: string
+          telefone: string | null
+        }
+        Insert: {
+          ativo?: boolean
+          created_at?: string
+          data_nascimento?: string | null
+          historico_clinico?: string | null
+          id?: string
+          nome: string
+          telefone?: string | null
+        }
+        Update: {
+          ativo?: boolean
+          created_at?: string
+          data_nascimento?: string | null
+          historico_clinico?: string | null
+          id?: string
+          nome?: string
+          telefone?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          nome: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          nome: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          nome?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { _user_id: string }
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "dentista"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +353,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "dentista"],
+    },
   },
 } as const

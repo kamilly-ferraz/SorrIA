@@ -1,11 +1,19 @@
-import { Search, Bell, Plus, ChevronDown } from 'lucide-react';
+import { Search, Bell, Plus, ChevronDown, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { currentUser } from '@/data/mockData';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { useAuth } from '@/hooks/useAuth';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export function Topbar() {
-  const initials = currentUser.nome
+  const { profile, role, signOut } = useAuth();
+  const nome = profile?.nome || 'Usuário';
+  const initials = nome
     .split(' ')
     .map((n) => n[0])
     .slice(0, 2)
@@ -36,18 +44,28 @@ export function Topbar() {
         </button>
 
         {/* User */}
-        <div className="flex items-center gap-2 rounded-xl px-2 py-1.5 transition-colors hover:bg-secondary cursor-pointer">
-          <Avatar className="h-8 w-8">
-            <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
-              {initials}
-            </AvatarFallback>
-          </Avatar>
-          <div className="hidden md:block">
-            <p className="text-sm font-medium leading-none text-foreground">{currentUser.nome}</p>
-            <p className="text-xs text-muted-foreground capitalize">{currentUser.papel}</p>
-          </div>
-          <ChevronDown className="hidden h-3 w-3 text-muted-foreground md:block" />
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="flex items-center gap-2 rounded-xl px-2 py-1.5 transition-colors hover:bg-secondary cursor-pointer">
+              <Avatar className="h-8 w-8">
+                <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
+                  {initials}
+                </AvatarFallback>
+              </Avatar>
+              <div className="hidden md:block">
+                <p className="text-sm font-medium leading-none text-foreground">{nome}</p>
+                <p className="text-xs text-muted-foreground capitalize">{role || ''}</p>
+              </div>
+              <ChevronDown className="hidden h-3 w-3 text-muted-foreground md:block" />
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={signOut} className="gap-2 text-destructive">
+              <LogOut className="h-4 w-4" />
+              Sair
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );
