@@ -1,15 +1,6 @@
-import "@testing-library/jest-dom";
+/**
+ * Vitest Setup - Configurações globais para testes
+ */
 
-Object.defineProperty(window, "matchMedia", {
-  writable: true,
-  value: (query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: () => {},
-    removeListener: () => {},
-    addEventListener: () => {},
-    removeEventListener: () => {},
-    dispatchEvent: () => {},
-  }),
-});
+// Configurações globais de teste podem ser adicionadas aqui
+// Ex: mocks globais, setup de bibliotecas, etc.
