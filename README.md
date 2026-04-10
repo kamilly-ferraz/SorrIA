@@ -133,13 +133,13 @@ Este projeto utiliza as seguintes bibliotecas open source (todas compatíveis co
 <img width="2845" height="1343" alt="image" src="https://github.com/user-attachments/assets/530b7ff5-4d61-4a3a-9ad4-068bf786238a" />
 
 ## Tela principal do ADM ( clínica )
-<img width="2854" height="2266" alt="image" src="https://github.com/user-attachments/assets/fbb98d56-e5bf-450c-9cb0-9fa50dc44cb0" />
+<img width="2835" height="1341" alt="image" src="https://github.com/user-attachments/assets/8743ed95-18a8-4639-83f0-e552dae6777d" />
 
 ## Tela principal do Super ADM
 <img width="2852" height="1332" alt="image" src="https://github.com/user-attachments/assets/74277957-af9f-4201-af70-e40436b99468" />
 
 ## Tela principal do Dentista
-<img width="2851" height="1596" alt="image" src="https://github.com/user-attachments/assets/4044501b-37e6-4a8d-a3f0-fa0657c258de" />
+<img width="2838" height="1342" alt="image" src="https://github.com/user-attachments/assets/481dbd3d-975c-4757-8c60-e0359e27c33e" />
 
 ## Odontograma
 <img width="2854" height="1334" alt="image" src="https://github.com/user-attachments/assets/fdd33392-bf1d-459a-9959-8a01160121d7" />
