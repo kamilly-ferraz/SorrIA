@@ -1,4 +1,4 @@
-# SorrIA - ERP Odontológico
+<img width="2849" height="1354" alt="image" src="https://github.com/user-attachments/assets/5c0613a9-e276-4138-92c3-dab21e66e1f4" /># SorrIA - ERP Odontológico
 
 Sistema de gestão odontológica completo para consultórios e clínicas.
 
@@ -122,5 +122,27 @@ Este projeto utiliza as seguintes bibliotecas open source (todas compatíveis co
 | date-fns | MIT | Datas |
 
 ---
+
+## Tela de Login
+<img width="2849" height="1354" alt="image" src="https://github.com/user-attachments/assets/c7f51abe-4084-42c7-9814-4d4241438c3f" />
+
+## Solicitar Acesso
+<img width="2852" height="1375" alt="image" src="https://github.com/user-attachments/assets/a73f5316-8762-4733-94ed-3048375a0378" />
+
+## Recuperação de Senha
+<img width="2845" height="1343" alt="image" src="https://github.com/user-attachments/assets/530b7ff5-4d61-4a3a-9ad4-068bf786238a" />
+
+## Tela principal do ADM ( clínica )
+<img width="2854" height="2266" alt="image" src="https://github.com/user-attachments/assets/fbb98d56-e5bf-450c-9cb0-9fa50dc44cb0" />
+
+## Tela principal do Super ADM
+<img width="2852" height="1332" alt="image" src="https://github.com/user-attachments/assets/74277957-af9f-4201-af70-e40436b99468" />
+
+## Tela principal do Dentista
+<img width="2851" height="1596" alt="image" src="https://github.com/user-attachments/assets/4044501b-37e6-4a8d-a3f0-fa0657c258de" />
+
+## Odontograma
+<img width="2854" height="1334" alt="image" src="https://github.com/user-attachments/assets/fdd33392-bf1d-459a-9959-8a01160121d7" />
+
 
 Este projeto é propriedade de SorrIA.
