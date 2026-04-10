@@ -1,0 +1,12 @@
+project_id = "vwbjkwztvmdxomltjmso"
+
+[functions.api]
+verify_jwt = false
+
+[functions.google-calendar]
+verify_jwt = false
+
+[functions.admin-create-user]
+verify_jwt = false
+
+
